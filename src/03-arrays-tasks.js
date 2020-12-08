@@ -480,8 +480,8 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return Array.from({ length: (end - start + 1) }).map((e, i) => start + i);
 }
 
 /**
@@ -495,8 +495,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
@@ -532,7 +532,6 @@ function distinct(/* arr */) {
 function group(/* array, keySelector, valueSelector */) {
   throw new Error('Not implemented');
 }
-
 
 /**
  * Projects each element of the specified array to a sequence
