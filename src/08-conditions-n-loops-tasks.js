@@ -386,32 +386,28 @@ function toNaryString(/* num, n */) {
 function getCommonDirectoryPath(pathes) {
   let index = 1;
   let res;
-  function mapping() {
+  const mapping = () => {
     let arr = [];
     if (!res) {
       res = pathes[0].split('/');
-      arr = res.slice();
-      res = [];
-    } else {
-      arr = res.slice();
     }
+    arr = res.slice();
+    res = [];
     const path = pathes.map((e) => e.split('/'));
     for (let i = 0; i < arr.length; i += 1) {
       if (arr[i] === path[index][i]) {
         res.push(arr[i]);
       } else {
-        if (index > 1) {
-          res.splice((i - 1), res.length);
-        }
         break;
       }
     }
     index += 1;
-  }
-  if (pathes.length !== index) {
-    mapping();
-  }
-  return `${res.join('/')}/`;
+    if (pathes.length !== index) {
+      mapping();
+    }
+  };
+  mapping();
+  return res.length === 0 ? '' : `${res.join('/')}/`;
 }
 
 
